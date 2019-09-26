@@ -13,7 +13,7 @@
           </el-col>
           <el-col :span="2" class="col">
             <div class="grid-content bg-purple colInner">
-              <a href="#">退出</a>
+              <a href="#" @click="handEnd()">退出</a>
             </div>
           </el-col>
         </el-row>
@@ -105,6 +105,13 @@ export default {
     beforeCreate(){
         const token=localStorage.getItem('token')
         if(!token){
+            this.$router.push({name:'login'})
+        }
+    },
+    methods:{
+        handEnd(){
+            localStorage.clear()
+            this.$message.success('退出成功')
             this.$router.push({name:'login'})
         }
     }
